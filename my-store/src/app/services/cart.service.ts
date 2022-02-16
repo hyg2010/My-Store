@@ -9,8 +9,8 @@ import { NumberSymbol } from '@angular/common';
 export class cartService {
   productsInCart: Product[] = [];
   paymentinfo: paymentInfo[] = [];
-  total: number = 0;
-  
+  total!:number
+
   constructor() {}
 
   getItems(): Product[] {
@@ -28,9 +28,8 @@ addToCart(product: Product): void {
 }
 
 cartTotal(): number {
-  const total: number = 0
   this.productsInCart.forEach(p => this.total += p.quantity * p.price);
-  return total; 
+  return this.total; 
 }
 
 

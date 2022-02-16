@@ -10,24 +10,23 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-@Input() productsInCart: Product[] = [];
 
 name: string = '';
 address: string = '';
 ccn: string = '';
 
 cartItems: Product[] = [];
+cartTotalPrice: number = 0;
 
 constructor(private CartService: cartService) { }
 
 
   ngOnInit(): void {
     this.cartItems = this.CartService.getItems();
+    this.cartTotalPrice = this.CartService.cartTotal();
   }
 
-cartTotalPrice(): number {
-  return this.CartService.cartTotal();
-}
+
 
 
 
