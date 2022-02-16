@@ -1,14 +1,19 @@
 <div *ngIf="product" class="detail-container">
 <img src="{{ product.url }}">
 <div class="detail-item">
-<p>{{ product.name }}</p>
-<p>{{ product.price }}</p>
-<p> {{ product.description }}</p>
-<select class="select-input"  [(ngModel)]="quantity"></select>
-
-
-
-
-
+<h3>{{ product.name }}</h3>
+<h3>{{ product.price }}</h3>
+<h4> {{ product.description }}</h4>
+<select class="select-input"  [(ngModel)]="quantities">
+    <option *ngFor="let quantity of quantities">{{quantity}}</option>
+</select>
+<br>
+<button>add to cart</button>
+<br>
+<br>
+<h5>Click Below To Reach Product Page</h5>
+<a class="back-link" routerLink="/">Product Page</a>
 </div>
 </div>
+
+

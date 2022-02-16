@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';  
 import { paymentInfo } from '../models/payment';
+import { NumberSymbol } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ import { paymentInfo } from '../models/payment';
 export class cartService {
   productsInCart: Product[] = [];
   paymentinfo: paymentInfo[] = [];
+  total: number = 0;
+  
   constructor() {}
 
   getItems(): Product[] {
@@ -16,20 +19,18 @@ export class cartService {
 
 //add item to cart
 addToCart(product: Product): void {
-  const checkCartProduct = this.productsInCart.find((p) => p.id === product.id);
-  if (!checkCartProduct) {
+  const cartItems = this.productsInCart.find((p) => p.id === product.id);
+  if (!cartItems) {
     this.productsInCart.push(product);
-  } 
-
-  else {checkCartProduct.quantity += product.quantity }
-  alert('Product added to cart')
-
+ } 
+  else {cartItems.quantity += product.quantity}
+  alert('Product added to cart');
 }
 
 cartTotal(): number {
-  let totalPrice = 0;
-  this.productsInCart.forEach(p => totalPrice += p.quantity * p.price);
-  return totalPrice; 
+  const total: number = 0
+  this.productsInCart.forEach(p => this.total += p.quantity * p.price);
+  return total; 
 }
 
 

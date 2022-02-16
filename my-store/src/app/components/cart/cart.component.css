@@ -41,5 +41,7 @@ img {
   .empty-cart-message {
     display: flex;
     justify-content: center;
-    margin-top: 64px;
+    margin-top: 12px;
+    color:rgb(90, 32, 90);
+    
   }
