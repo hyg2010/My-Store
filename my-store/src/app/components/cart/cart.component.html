@@ -1,14 +1,17 @@
-<div class="cart-container">
 <!-- <div class="empty-cart-message" *ngIf="cartItems.length === 0">
     <p>Your cart is empty ):</p>
 </div> -->
+<div class="cart-container">
 <div *ngIf="cartItems.length > 0" class="cart-item">
+<div class="form-margin"></div>
 <div class="cart-item" *ngFor="let product of cartItems">
-
-    <img src="{{product.url}}">
 <div class="cart-items-details">
+    <img src="{{product.url}}">
     <h1>{{product.name}}</h1>
+    <br>
     <h1>{{product.price}}</h1>
-    <h1>{{cartTotalPrice}}</h1>
+    <br>
+    <h1>{{cartTotal}}</h1>
     <input class="number-input" type="number" min="0" max="10">
-
+</div>
+</div>

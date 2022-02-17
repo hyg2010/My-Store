@@ -14,16 +14,16 @@ export class CartComponent implements OnInit {
 name: string = '';
 address: string = '';
 ccn: string = '';
+cartTotal: any = 0 
 
 cartItems: Product[] = [];
-cartTotalPrice: number = 0;
 
 constructor(private CartService: cartService) { }
 
 
   ngOnInit(): void {
     this.cartItems = this.CartService.getItems();
-    this.cartTotalPrice = this.CartService.cartTotal();
+    this.cartTotal = this.CartService.cartTotalPrice();
   }
 
 

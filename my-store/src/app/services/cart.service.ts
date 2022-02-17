@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';  
 import { paymentInfo } from '../models/payment';
-import { NumberSymbol } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,7 @@ export class cartService {
   productsInCart: Product[] = [];
   paymentinfo: paymentInfo[] = [];
   total!:number
-
+  totalPrice: number = 0
   constructor() {}
 
   getItems(): Product[] {
@@ -27,10 +26,11 @@ addToCart(product: Product): void {
   alert('Product added to cart');
 }
 
-cartTotal(): number {
-  this.productsInCart.forEach(p => this.total += p.quantity * p.price);
-  return this.total; 
-}
+
+cartTotalPrice() {
+const totalPrice = this.productsInCart.map(p => p.price * p.id) 
+return totalPrice
+} 
 
 
 removeProduct(id: number) {

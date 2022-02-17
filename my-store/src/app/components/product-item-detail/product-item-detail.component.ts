@@ -45,7 +45,6 @@ this.route.paramMap.subscribe((routeParams: ParamMap) => {
 
    addToCart(product: Product):void {
     this.cartservice.addToCart(product)
-    window.alert('product added to cart')
   }
 }
 

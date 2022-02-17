@@ -4,11 +4,11 @@
 <h3>{{ product.name }}</h3>
 <h3>{{ product.price }}</h3>
 <h4> {{ product.description }}</h4>
-<select class="select-input"  [(ngModel)]="quantities">
+<select class="select-input"> [(ngModel)]="selectedquantity">
     <option *ngFor="let quantity of quantities">{{quantity}}</option>
 </select>
 <br>
-<button>add to cart</button>
+<button (click)="addToCart(product)">Add to Cart</button>
 <br>
 <br>
 <h5>Click Below To Reach Product Page</h5>
