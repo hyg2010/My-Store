@@ -9,7 +9,6 @@ export class cartService {
   productsInCart: Product[] = [];
   paymentinfo: paymentInfo[] = [];
   total!:number
-  totalPrice: number = 0
   constructor() {}
 
   getItems(): Product[] {
