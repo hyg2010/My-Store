@@ -9,12 +9,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+
 export class CartComponent implements OnInit {
 
 name: string = '';
 address: string = '';
 ccn: string = '';
-cartTotal: any = 0 
+cartTotal: number = 0
 
 cartItems: Product[] = [];
 
@@ -22,13 +23,9 @@ constructor(private CartService: cartService) { }
 
 
   ngOnInit(): void {
-    this.cartItems = this.CartService.getItems();
+    this.cartItems = this.CartService.getProduct();
     this.cartTotal = this.CartService.cartTotalPrice();
   }
-
-
-
-
 
 
 

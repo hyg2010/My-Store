@@ -17,7 +17,7 @@ export class ProductItemDetailComponent implements OnInit {
     price: 0,
     description: '',
     url: '',
-    quantity: 0
+    quantity: 1
   }
   quantity: number = 1;
   quantities: number [] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

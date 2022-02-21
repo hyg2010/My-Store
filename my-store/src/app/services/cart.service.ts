@@ -8,16 +8,15 @@ import { paymentInfo } from '../models/payment';
 export class cartService {
   productsInCart: Product[] = [];
   paymentinfo: paymentInfo[] = [];
-  total!:number
   constructor() {}
 
-  getItems(): Product[] {
+  getProduct(): Product[] {
     return this.productsInCart;
   }
 
 //add item to cart
 addToCart(product: Product): void {
-  const cartItems = this.productsInCart.find((p) => p.id === product.id);
+  const cartItems = this.productsInCart.find((prod) => prod.id == product.id)
   if (!cartItems) {
     this.productsInCart.push(product);
  } 
@@ -25,15 +24,20 @@ addToCart(product: Product): void {
   alert('Product added to cart');
 }
 
+totalPrice: number = 0
+quantity: number = 0
 
-cartTotalPrice() {
-const totalPrice = this.productsInCart.map(p => p.price * p.id) 
-return totalPrice
-} 
-
+  cartTotalPrice(): number {
+    this.totalPrice = this.productsInCart.reduce((accumulator, Product) => {
+      return accumulator + Product.price
+}, 0);
+return this.totalPrice; 
+  }
 
 removeProduct(id: number) {
-  this.productsInCart.filter((cartProduct) => cartProduct.id !== id); {
+  this.productsInCart.filter((cartProduct) => cartProduct.id !== id); 
+ {
+  alert('remove product from cart') 
     return this.productsInCart
   }
 }
