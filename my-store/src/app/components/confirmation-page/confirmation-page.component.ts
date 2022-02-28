@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { cartService } from 'src/app/services/cart.service';
+import { paymentInfo } from 'src/app/models/payment';
 
 @Component({
   selector: 'app-confirmation-page',
@@ -7,14 +8,19 @@ import { cartService } from 'src/app/services/cart.service';
   styleUrls: ['./confirmation-page.component.css']
 })
 export class ConfirmationPageComponent implements OnInit {
-
-paymentconfirmation = this.cartservice.paymentConfirmation
+  paymentinfo: paymentInfo = {
+    name: '',
+    address: '',
+    ccn: '',
+    total: 0
+  }
 
   constructor(private cartservice: cartService) { }
   
 
 
   ngOnInit(): void {
+   this.paymentinfo = this.cartservice.getPaymentInfo();
   }
 
 }

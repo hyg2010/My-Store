@@ -32,19 +32,18 @@ export class ProductItemDetailComponent implements OnInit {
 
 ngOnInit(): void {
 
-this.route.paramMap.subscribe((routeParams: ParamMap) => {
-  this.id = Number(routeParams.get('id'))
-
-  this.productservice.getProducts().subscribe((product) => {
-  this.product = product.find(prod => prod.id === this.id) 
-
+  this.route.paramMap.subscribe((routeParams: ParamMap) => {
+    this.id = Number(routeParams.get('id'))
+  
+    this.productservice.getProducts().subscribe((product) => {
+    this.product = product.find(prod => prod.id === this.id) 
+  
+    });
   });
-});
-
-   }
-
-   addToCart(product: Product):void {
-    this.cartservice.addToCart(product)
+  
+     }
+  
+     addToCart(product: Product):void {
+      this.cartservice.addToCart(product)
+    }
   }
-}
-

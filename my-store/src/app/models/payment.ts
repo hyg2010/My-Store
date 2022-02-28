@@ -2,14 +2,14 @@ export class paymentInfo {
     name: string;
     ccn: string;
     address: string;
-    totalPrice: number;
+    total: number;
     
 
     constructor() {
         this.name = '';
         this.ccn = '';
         this.address = '';
-        this.totalPrice = 0;
+        this.total = 0;
     }
 
 }

@@ -17,14 +17,14 @@ import { FormsModule } from '@angular/forms';
     ConfirmationPageComponent,
     ProductItemComponent,
     ProductItemDetailComponent,
-    ProductListComponent,
+    ProductListComponent
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,    
   ],
   providers: [],
   bootstrap: [AppComponent],

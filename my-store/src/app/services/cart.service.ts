@@ -7,23 +7,27 @@ import { paymentInfo } from '../models/payment';
 })
 export class cartService {
   productsInCart: Product[] = [];
-  paymentinfo: paymentInfo[] = [];
+  paymentinfo: paymentInfo = {
+    name: '',
+    address: '',
+    ccn: '',
+    total: 0
+  }
   constructor() {}
 
   getProduct(): Product[] {
     return this.productsInCart;
   }
 
-//add item to cart
-addToCart(product: Product): void {
+addToCart(product: Product) {
   const cartItems = this.productsInCart.find((prod) => prod.id == product.id)
-  if (!cartItems) {
+  if (cartItems?.quantity && product.quantity) {
+    cartItems.quantity += product.quantity;
+  } else {
     this.productsInCart.push(product);
- } 
-  else {cartItems.quantity += product.quantity}
-  alert('Product added to cart');
+    alert('product added to cart')
+  }
 }
-
 totalPrice: number = 0
 quantity: number = 0
 
@@ -47,13 +51,14 @@ clearCart() {
   return this.productsInCart;
 }
 
-paymentConfirmation() {
-  this.paymentinfo = []
-  return this.paymentinfo
+
+getPayment(paymentinfo: paymentInfo): void {
+  this.paymentinfo = paymentinfo;
+   }
+ 
+   getPaymentInfo() {
+     return this.paymentinfo
    }
   }
-
-
-
 
 

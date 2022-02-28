@@ -34,8 +34,8 @@ img {
   }
   
   .cart-panel {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 1px;
+    margin-right: 1px;
   }
   
   .empty-cart-message {
@@ -43,5 +43,4 @@ img {
     justify-content: center;
     margin-top: 12px;
     color:rgb(90, 32, 90);
-    
   }

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { cartService } from 'src/app/services/cart.service'; 
 import { Product } from 'src/app/models/product'
 import { paymentInfo } from 'src/app/models/payment';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,15 +11,19 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class CartComponent implements OnInit {
+@Input() products: Product[] = []
 
 name: string = '';
 address: string = '';
 ccn: string = '';
+total: number = 0
+
 cartTotal: number = 0
 
 cartItems: Product[] = [];
 
-constructor(private CartService: cartService) { }
+constructor(private CartService: cartService, private router: Router) { }
+  
 
 
   ngOnInit(): void {
@@ -27,10 +31,27 @@ constructor(private CartService: cartService) { }
     this.cartTotal = this.CartService.cartTotalPrice();
   }
 
+submitForm(): void {
+  const paymentinfo: paymentInfo = {
+    name: this.name,
+    address: this.address,
+    ccn: this.ccn,
+    total: this.total
+  }
 
 
 
+  this.CartService.getPayment(paymentinfo);
+  this.router.navigate(['/confirmation']);
+
+  this.name = '';
+  this.address = '';
+  this.ccn = '';
+  this.total = 0;
+
+}
 
 
 
 }
+
