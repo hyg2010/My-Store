@@ -4,7 +4,7 @@
     <h3>{{ product.name }}</h3>
     <h3>{{ product.price }}</h3>
     <h4> {{ product.description }}</h4>
-    <select class="select-input"> [(ngModel)]="selectedquantity">
+    <select class="select-input" [(ngModel)]="quantity">  [(ngModelChange)]="onChange($event)">
         <option *ngFor="let quantity of quantities">{{quantity}}</option>
     </select>
     <br>

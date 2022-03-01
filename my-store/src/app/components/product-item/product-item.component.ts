@@ -28,7 +28,7 @@ quantity: number = 1;
   
   ngOnInit(): void {}
 
-  addProduct(product: Product): void {
+  addToCart(product: Product): void {  
     this.cartservice.addToCart(product)
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { cartService } from 'src/app/services/cart.service'
 import { ProductService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
@@ -40,8 +40,11 @@ ngOnInit(): void {
   
     });
   });
-  
-     }
+}
+
+onChange(event: any) {
+      this.quantity = event.target.value ;
+    }
   
      addToCart(product: Product):void {
       this.cartservice.addToCart(product)

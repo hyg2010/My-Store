@@ -23,13 +23,13 @@ cartTotal: number = 0
 cartItems: Product[] = [];
 
 constructor(private CartService: cartService, private router: Router) { }
-  
-
 
   ngOnInit(): void {
     this.cartItems = this.CartService.getProduct();
     this.cartTotal = this.CartService.cartTotalPrice();
+   
   }
+  
 
 submitForm(): void {
   const paymentinfo: paymentInfo = {

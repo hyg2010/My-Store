@@ -22,14 +22,14 @@ export class cartService {
 addToCart(product: Product) {
   const cartItems = this.productsInCart.find((prod) => prod.id == product.id)
   if (cartItems?.quantity && product.quantity) {
-    cartItems.quantity += product.quantity;
+  cartItems.quantity += product.quantity
   } else {
     this.productsInCart.push(product);
     alert('product added to cart')
   }
 }
+
 totalPrice: number = 0
-quantity: number = 0
 
   cartTotalPrice(): number {
     this.totalPrice = this.productsInCart.reduce((accumulator, Product) => {
