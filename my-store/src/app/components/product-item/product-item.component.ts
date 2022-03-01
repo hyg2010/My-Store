@@ -9,26 +9,32 @@ import { cartService } from 'src/app/services/cart.service';
 })
 
 export class ProductItemComponent implements OnInit {
-@Input() product!: Product;
+  @Input() product!: Product;
 
-quantities: number [] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-quantity: number = 1;
-
-  constructor(private cartservice: cartService) {
-    
-    this.product = {
-      id: 0,
-      name: '',
-      price: 0,
-      description: '',
-      url: '',
-      quantity: 0
-    }
-   }
+  quantities: number [] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  quantity: number = 1;
   
-  ngOnInit(): void {}
+    constructor(private cartservice: cartService) {
+      
+      this.product = {
+        id: 0,
+        name: '',
+        price: 0,
+        description: '',
+        url: '',
+        quantity: 0
+      }
+     }
+    
+    ngOnInit(): void {}
 
-  addToCart(product: Product): void {  
-    this.cartservice.addToCart(product)
+    onChange(event: any) {
+      this.quantity = event.target.value ;
+    }
+  
+    addToCart(product: Product):void {
+      this.product.quantity = (this.quantity)
+     this.cartservice.addToCart(this.product)
+     
+   }
   }
-}

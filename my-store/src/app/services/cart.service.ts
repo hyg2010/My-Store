@@ -19,14 +19,30 @@ export class cartService {
     return this.productsInCart;
   }
 
+// addToCart(product: Product) {
+//   const cartItems = this.productsInCart.find((prod) => prod.id == product.id)
+//   if (cartItems?.quantity && product.quantity) {
+//   cartItems.quantity += product.quantity
+//   } else {
+//     this.productsInCart.push(product);
+//     console.log(this.productsInCart)
+//     alert('product added to cart')
+//   }
+// }
+
 addToCart(product: Product) {
-  const cartItems = this.productsInCart.find((prod) => prod.id == product.id)
-  if (cartItems?.quantity && product.quantity) {
-  cartItems.quantity += product.quantity
+  if (this.productsInCart.length) {
+    let count = 0
+    this.productsInCart.forEach(p => {
+      p.id == product.id ? p.quantity += product.quantity : count += 1
+    })
+    if (count == this.productsInCart.length) {
+      this.productsInCart.push(product)
+    }
   } else {
-    this.productsInCart.push(product);
-    alert('product added to cart')
+    this.productsInCart.push(product)
   }
+  alert('product added to cart')
 }
 
 totalPrice: number = 0

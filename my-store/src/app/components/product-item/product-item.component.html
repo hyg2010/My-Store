@@ -2,7 +2,7 @@
     <a routerLink = "product/{{product.id}}"><img class="product-image" src ="{{product.url}}"/></a>
     <h1>{{product.name}}</h1>
     <p class="price">{{product.price}}</p>
-    <select class="select-input"  [(ngModel)]="quantity">
+    <select class="select-input" [(ngModel)]="quantity">  [(ngModelChange)]="onChange($event)">
         <option *ngFor="let quantity of quantities">{{quantity}}</option>
     </select>
     <button (click)="addToCart(product)" class="btn btn-primary" >Add to cart</button>

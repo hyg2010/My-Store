@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { cartService } from 'src/app/services/cart.service'
 import { ProductService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
@@ -11,7 +11,7 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
 })
 export class ProductItemDetailComponent implements OnInit {
 
-  product: Product | undefined = {
+  product: Product = {
     id: 0,
     name: 'string',
     price: 0,
@@ -36,7 +36,7 @@ ngOnInit(): void {
     this.id = Number(routeParams.get('id'))
   
     this.productservice.getProducts().subscribe((product) => {
-    this.product = product.find(prod => prod.id === this.id) 
+    this.product = product.find(prod => prod.id === this.id) as unknown as Product;
   
     });
   });
@@ -47,6 +47,8 @@ onChange(event: any) {
     }
   
      addToCart(product: Product):void {
-      this.cartservice.addToCart(product)
+       this.product.quantity = (this.quantity)
+      this.cartservice.addToCart(this.product)
+      
     }
   }

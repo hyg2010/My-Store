@@ -16,7 +16,7 @@ export class ConfirmationPageComponent implements OnInit {
   }
 
   constructor(private cartservice: cartService) { }
-  
+
 
 
   ngOnInit(): void {
