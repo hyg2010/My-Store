@@ -27,7 +27,6 @@ constructor(private CartService: cartService, private router: Router) { }
   ngOnInit(): void {
     this.cartItems = this.CartService.getProduct();
     this.cartTotal = this.CartService.cartTotalPrice();
-   
   }
   
 

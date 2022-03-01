@@ -1,10 +1,12 @@
 # MyStore
 
+Welcome to my store. Mystore is an ecommerce store with a total of 5 products. Mystore is conducted using Angular 13. Users have the option to choose between 5 products and proceed to the checkout page to input their name, address, and credit card information. The user will receive a confirmation after submitting their information. 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if changes are made in the code. 
 
 ## Code scaffolding
 
