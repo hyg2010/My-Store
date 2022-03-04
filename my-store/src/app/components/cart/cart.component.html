@@ -6,27 +6,25 @@
     <div class="cart-items-details">
         <h4>{{product.name}}</h4>
         <h4>{{product.price}}</h4>
-        <label for="Quantity"><b>Quantity</b>:</label>
-        <input class="number-input" name="quantity" type="number"min="0" max="10">
+        <label><b>Quantity:</b></label>
+        <input class="number-input" id="number" min="0" max="10" type="number" ngModel={{product.quantity}} (ngModelChange)="removeCartItem($event)">
     </div>
 </div>
 <h3>Total: {{ cartTotal }}</h3>
-
-<form class="form-margin" #form="ngForm" (ngSubmit)="submitForm()">
-<label>Full Name:</label>
+</div>
+<div class="cart-panel">
+<form class="form-margin" #form="ngForm" (ngSubmit)="onSubmit()">
+<p>Full Name:</p>
 <input type="text" name="name" minlength="3" required maxlength="25" required placeholder="Enter Your Name" [(ngModel)]="name">
-<div class="cart-panel">
-<label>Address:</label>
+<p>Address:</p>
 <input type="text" name="address" minlength="3" required ="25" required placeholder="Enter Your Full Address" [(ngModel)]="address">
-</div>
-<div class="cart-panel">
-<label>Credit Card Number:</label>
+<p>Credit Card Number:</p>
 <input type="text" name="16-digit-number" minlength="16" required maxlength="16" required placeholder="Credit Card Details" [(ngModel)]="ccn">
-</div>
 <br>
 <br>
 <input type="submit" [disabled]="form.invalid" value="submit">
 </form>
+</div>
 </div>
 
 

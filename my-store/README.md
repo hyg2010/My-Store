@@ -4,7 +4,7 @@ Welcome to my store. Mystore is an ecommerce store with a total of 5 products. M
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
-## Development server
+## 
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if changes are made in the code. 
 
@@ -14,15 +14,14 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build` to build the project. The build will be stored in the `dist/` directory.
 
-## Running unit tests
+## Project Pages
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Product List: This page allows users to add any of the 5 products to the cart page. 
+2. Product Detail Page: A user can click on the picture of the product list page and view a product on a individual page. The user can add a product to the cart. 
+3. Cart Page: This page will show all the products added to the cart and will allow the user to complete the checkout page which includes name, address, and credit card information
+4. Confirmation: The confirmation page will go over the order details and shipping speed.
 
 ## Further help
 

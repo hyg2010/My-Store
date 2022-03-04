@@ -15,12 +15,15 @@ export class ConfirmationPageComponent implements OnInit {
     total: 0
   }
 
+  cartTotal: number = 0 
+
   constructor(private cartservice: cartService) { }
 
 
 
   ngOnInit(): void {
    this.paymentinfo = this.cartservice.getPaymentInfo();
+   this.cartTotal = this.cartservice.cartTotalPrice();
   }
 
 }
