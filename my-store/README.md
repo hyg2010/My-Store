@@ -26,3 +26,9 @@ Run `ng build` to build the project. The build will be stored in the `dist/` dir
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Attribution 
+
+https://knowledge.udacity.com/
+https://stackoverflow.com/
+https://angular.io/

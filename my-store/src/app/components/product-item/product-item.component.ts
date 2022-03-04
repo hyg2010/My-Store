@@ -20,7 +20,7 @@ export class ProductItemComponent implements OnInit {
     price: 0,
     description: '',
     url: '',
-    quantity: 0
+    quantity: 1
   }
 
     constructor(private cartservice: cartService) {
