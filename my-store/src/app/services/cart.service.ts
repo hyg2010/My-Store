@@ -31,7 +31,9 @@ addToCart(product: Product) {
   if (this.productsInCart.length) {
     let count = 0
     this.productsInCart.forEach(p => {
-      p.id == product.id ? p.quantity += product.quantity : count += 1
+      p.id == product.id ? 
+      // (p.quantity += product.quantity) : count += 1
+      Number(p.quantity) + Number(product.quantity) : count += 1
     })
     if (count == this.productsInCart.length) {
       this.productsInCart.push(product)
@@ -50,7 +52,7 @@ getProduct(): Product[] {
   cartTotalPrice(): number {
     let value: number = 0
     this.productsInCart.length ? this.productsInCart.forEach(p => {
-      value =+ (p.price * p.quantity)
+      value =+  (p.price * p.quantity)
     }) : value = 0
     this.totalPrice =  value.toFixed(2)
     return this.totalPrice

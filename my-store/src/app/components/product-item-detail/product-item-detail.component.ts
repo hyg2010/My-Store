@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { cartService } from 'src/app/services/cart.service'
 import { ProductService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
@@ -10,6 +10,8 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
   styleUrls: ['./product-item-detail.component.css']
 })
 export class ProductItemDetailComponent implements OnInit {
+
+  @Output() addToCart: EventEmitter<Product> = new EventEmitter();
 
   product: Product = {
     id: 0,
@@ -30,25 +32,15 @@ export class ProductItemDetailComponent implements OnInit {
     ) {
      }
 
-ngOnInit(): void {
+ngOnInit(): void {}
 
-  this.route.paramMap.subscribe((routeParams: ParamMap) => {
-    this.id = Number(routeParams.get('id'))
-  
-    this.productservice.getProducts().subscribe((product) => {
-    this.product = product.find(prod => prod.id === this.id) as unknown as Product;
-  
-    });
-  });
-}
-
-onChange(event: any) {
-      this.quantity = event.target.value ;
+onChange(quantity: number) {
+      this.quantity = quantity ;
     }
-  
-     addToCart(product: Product):void {
-       this.product.quantity = (this.quantity)
-      this.cartservice.addToCart(this.product)
-      
+
+
+     submitCartProduct(product: Product):void {
+      //  product.quantity = this.quantity
+      this.addToCart.emit(product);
     }
   }
