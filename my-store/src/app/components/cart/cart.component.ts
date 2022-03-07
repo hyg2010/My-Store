@@ -19,7 +19,6 @@ total: number = 0;
 cartTotal: number = 0
 
 cartItems: Product[] = [];
-
 constructor(private CartService: cartService, private router: Router) {}
 
   ngOnInit(): void {
@@ -51,6 +50,7 @@ onSubmit() {
 }
 
 
+
 removeCartItem(id: number): void {
   this.cartItems = this.cartItems.filter(
     (product) => product.id !== id
@@ -58,5 +58,4 @@ removeCartItem(id: number): void {
   this.CartService.removeProduct(id);
   
 }
-
 }

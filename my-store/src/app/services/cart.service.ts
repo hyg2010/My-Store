@@ -16,7 +16,6 @@ export class cartService {
   totalPrice: any = 0 
   constructor() {}
 
-
 // addToCart(product: Product) {
 //   const cartItems = this.productsInCart.find((prod) => prod.id == product.id)
 //   if (cartItems?.quantity && product.quantity) {
@@ -51,16 +50,25 @@ getProduct(): Product[] {
   cartTotalPrice(): number {
     let value: number = 0
     this.productsInCart.length ? this.productsInCart.forEach(p => {
-      value = value + (p.price * p.quantity)
+      value =+ (p.price * p.quantity)
     }) : value = 0
     this.totalPrice =  value.toFixed(2)
     return this.totalPrice
   }
+
+  
+  
+
+
+
+
 //     this.totalPrice = this.productsInCart.reduce((accumulator, Product) => {
 //       return accumulator + Product.price
 // }, 0);
 // return this.totalPrice; 
 //   }
+
+
 
 removeProduct(id: number) {
   this.productsInCart.filter((cartProduct) => cartProduct.id !== id); 
@@ -69,12 +77,6 @@ removeProduct(id: number) {
     return this.productsInCart
   }
 }
-
-clearCart() {
-  this.productsInCart = [];
-  return this.productsInCart;
-}
-
 
 getPayment(paymentinfo: paymentInfo) {
   this.paymentinfo = paymentinfo;

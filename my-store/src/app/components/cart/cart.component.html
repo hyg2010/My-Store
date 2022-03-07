@@ -7,7 +7,7 @@
         <h4>{{product.name}}</h4>
         <h4>{{product.price}}</h4>
         <label><b>Quantity:</b></label>
-        <input class="number-input" id="number" min="0" max="10" type="number" ngModel={{product.quantity}} (ngModelChange)="removeCartItem($event)">
+        <input class="number-input" id="number" min="0" max="10" type="number" ngModel={{product.quantity}} (ngModelChange)="removeCartItem(product.id)">
     </div>
 </div>
 <h3>Total: {{ cartTotal }}</h3>
@@ -19,7 +19,7 @@
 <p>Address:</p>
 <input type="text" name="address" minlength="3" required ="25" required placeholder="Enter Your Full Address" [(ngModel)]="address">
 <p>Credit Card Number:</p>
-<input type="text" name="16-digit-number" minlength="16" required maxlength="16" required placeholder="Credit Card Details" [(ngModel)]="ccn">
+<input type="number" name="16-digit-number" minlength="16" required maxlength="16" required placeholder="Credit Card Details" [(ngModel)]="ccn">
 <br>
 <br>
 <input type="submit" [disabled]="form.invalid" value="submit">
