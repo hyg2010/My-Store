@@ -32,8 +32,7 @@ addToCart(product: Product) {
     let count = 0
     this.productsInCart.forEach(p => {
       p.id == product.id ? 
-      // (p.quantity += product.quantity) : count += 1
-      Number(p.quantity) + Number(product.quantity) : count += 1
+      p.quantity=Number(p.quantity) + Number(product.quantity) : count += 1
     })
     if (count == this.productsInCart.length) {
       this.productsInCart.push(product)
@@ -55,11 +54,9 @@ getProduct(): Product[] {
       value =+  (p.price * p.quantity)
     }) : value = 0
     this.totalPrice =  value.toFixed(2)
-    return this.totalPrice
-  }
+    return this.totalPrice;
+    }
 
-  
-  
 
 
 
@@ -72,8 +69,8 @@ getProduct(): Product[] {
 
 
 
-removeProduct(id: number) {
-  this.productsInCart.filter((cartProduct) => cartProduct.id !== id); 
+removeProduct(product: Product) {
+  this.productsInCart.filter((prod) => prod.id !== product.id); 
  {
   alert('remove product from cart') 
     return this.productsInCart

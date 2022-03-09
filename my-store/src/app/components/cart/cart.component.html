@@ -7,7 +7,7 @@
         <h4>{{product.name}}</h4>
         <h4>{{product.price}}</h4>
         <label><b>Quantity:</b></label>
-        <input class="number-input" id="number" min="0" max="10" type="number" ngModel={{product.quantity}} (ngModelChange)="removeCartItem(product.id)">
+        <input class="number-input" id="number" min="0" max="10" type="number" ngModel={{product.quantity}} (ngModelChange)="updateCart(product)">
     </div>
 </div>
 <h3>Total: {{ cartTotal }}</h3>

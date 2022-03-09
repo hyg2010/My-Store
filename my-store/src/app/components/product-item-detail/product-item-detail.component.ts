@@ -11,7 +11,6 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
 })
 export class ProductItemDetailComponent implements OnInit {
 
-  @Output() addToCart: EventEmitter<Product> = new EventEmitter();
 
   product: Product = {
     id: 0,
@@ -32,15 +31,24 @@ export class ProductItemDetailComponent implements OnInit {
     ) {
      }
 
-ngOnInit(): void {}
+     ngOnInit(): void {
 
-onChange(quantity: number) {
-      this.quantity = quantity ;
+  this.route.paramMap.subscribe((routeParams: ParamMap) => {
+    this.id = Number(routeParams.get('id'))
+  
+    this.productservice.getProducts().subscribe((product) => {
+    this.product = product.find(prod => prod.id === this.id) as unknown as Product;
+  
+    });
+  });
+}
+
+onChange(event: any) {
+      this.quantity = event.target.value ;
     }
 
-
      submitCartProduct(product: Product):void {
-      //  product.quantity = this.quantity
-      this.addToCart.emit(product);
+       this.product.quantity = (this.quantity)
+      this.cartservice.addToCart(product)
     }
   }

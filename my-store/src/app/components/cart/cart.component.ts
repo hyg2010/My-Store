@@ -15,10 +15,10 @@ export class CartComponent implements OnInit {
 name: string = '';
 address: string = '';
 ccn: string = '';
-total: number = 0;
+totalPrice: number = 0;
 cartTotal: number = 0
-
 cartItems: Product[] = [];
+
 constructor(private CartService: cartService, private router: Router) {}
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ onSubmit() {
     name: this.name,
     address: this.address,
     ccn: this.ccn,
-    total: this.total
+    total: this.totalPrice
   };
 
 
@@ -43,19 +43,26 @@ onSubmit() {
   this.name = '';
   this.address = '';
   this.ccn = '';
-  this.total = 0;
+  this.totalPrice = 0;
 
+}
 
+updateCart(product:Product) {
+  if (product.quantity === 0) {
+    this.CartService.removeProduct(product);
+  }
+
+this.totalPrice = 0;
+
+for (let productItem of this.product) {
+  if (productItem.id === product.id) {
+    productItem.quantity = product.quantity;
+  }
+  this.totalPrice = this.totalPrice + productItem.quantity * productItem.price;
+}
+
+}
 
 }
 
 
-
-removeCartItem(id: number): void {
-  this.cartItems = this.cartItems.filter(
-    (product) => product.id !== id
-  );
-  this.CartService.removeProduct(id);
-  
-}
-}
