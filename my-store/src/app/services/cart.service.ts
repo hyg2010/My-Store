@@ -16,16 +16,6 @@ export class cartService {
   totalPrice: any = 0 
   constructor() {}
 
-// addToCart(product: Product) {
-//   const cartItems = this.productsInCart.find((prod) => prod.id == product.id)
-//   if (cartItems?.quantity && product.quantity) {
-//   cartItems.quantity += product.quantity
-//   } else {
-//     this.productsInCart.push(product);
-//     console.log(this.productsInCart)
-//     alert('product added to cart')
-//   }
-// }
 
 addToCart(product: Product) {
   if (this.productsInCart.length) {
@@ -58,16 +48,15 @@ getProduct(): Product[] {
     }
 
 
+totalValueInCart(): string {
+  let value: number = 0
+  this.productsInCart.length ? this.productsInCart.forEach(p => {
+    value = value + (Number(p.price) * Number(p.quantity))
+  }) : value = 0
+  this.totalPrice = value.toFixed(2)
+  return this.totalPrice
 
-
-
-//     this.totalPrice = this.productsInCart.reduce((accumulator, Product) => {
-//       return accumulator + Product.price
-// }, 0);
-// return this.totalPrice; 
-//   }
-
-
+}
 
 removeProduct(product: Product) {
   this.productsInCart.filter((prod) => prod.id !== product.id); 

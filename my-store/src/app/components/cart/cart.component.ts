@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
 name: string = '';
 address: string = '';
 ccn: string = '';
-totalPrice: number = 0;
+totalPrice: any = '';
 cartTotal: number = 0
 cartItems: Product[] = [];
 
@@ -43,26 +43,21 @@ onSubmit() {
   this.name = '';
   this.address = '';
   this.ccn = '';
-  this.totalPrice = 0;
+  this.totalPrice = '';
 
 }
+
 
 updateCart(product:Product) {
-  if (product.quantity === 0) {
+  if (product.quantity >= 0) {
     this.CartService.removeProduct(product);
-  }
-
-this.totalPrice = 0;
-
-for (let productItem of this.product) {
-  if (productItem.id === product.id) {
-    productItem.quantity = product.quantity;
-  }
-  this.totalPrice = this.totalPrice + productItem.quantity * productItem.price;
-}
-
-}
-
+  } 
+  this.CartService.totalValueInCart
 }
 
 
+removeProduct(product: Product) {
+  this.CartService.removeProduct(product);
+}
+
+}
