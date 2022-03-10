@@ -9,44 +9,29 @@ import { cartService } from 'src/app/services/cart.service';
 })
 
 export class ProductItemComponent implements OnInit {
-  @Input() product: Product;
-  @Output() addToCart: EventEmitter<Product> = new EventEmitter();
+  @Input() product!: Product;
+  @Output() addProduct: EventEmitter<Product> = new EventEmitter();
 
   quantities: number [] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  quantity: number = 1;
-  totalPrice: number = 0
-  productList: Product = {
-    id: 0,
-    name: '',
-    price: 0,
-    description: '',
-    url: '',
-    quantity: 1
-  }
+  quantity: any = 1;
+ 
 
     constructor(private cartservice: cartService) {
       
-      this.product = {
-        id: 0,
-        name: '',
-        price: 0,
-        description: '',
-        url: '',
-        quantity: 0
-      }
+   
      }
     
     ngOnInit(): void {}
 
-    onChange(event: any) {
-      this.quantity = event.target.value ;
-    }
-
  
   
-  submitAddProduct(product: Product) {
-    this.product.quantity = this.quantity
-   this.cartservice.addToCart(product)
-   this.addToCart.emit(product)
+    submitAddProduct(product: Product) {
+    let cartproducts = product
+     this.addProduct.emit(cartproducts);
+   }
+
+   onChange(quantity: number) {
+    this.quantity = Number(quantity)
   }
-}
+
+  }

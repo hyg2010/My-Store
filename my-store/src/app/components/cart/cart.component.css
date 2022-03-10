@@ -42,5 +42,21 @@ img {
     display: flex;
     justify-content: center;
     margin-top: 12px;
-    color:rgb(90, 32, 90);
+    color:rgb(90, 32, 90);    
   }
+
+  .credit-card {
+    -webkit-inner-spin-button: none;
+    -webkit-outer-spin-button: none;  
+      -webkit-appearance: none; 
+
+  }
+
+  input[type=number]::-webkit-inner-spin-button:before,
+input[type=number]::-webkit-inner-spin-button:after {
+    content: "^";
+    position:absolute;
+    right: 0;
+    font-family:monospace;
+  
+}
